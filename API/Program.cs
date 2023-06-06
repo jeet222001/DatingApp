@@ -1,25 +1,56 @@
-using API.Data;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using API;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-builder.Services.AddDbContext<DataContext>(option =>
+namespace API
 {
-    option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
 
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
 }
 
-app.MapControllers();
 
-app.Run();
+//using API.Data;
+//using Microsoft.EntityFrameworkCore;
+
+//var builder = WebApplication.CreateBuilder(args);
+
+//// Add services to the container.
+
+//builder.Services.AddControllers();
+//builder. Services.AddDbContext<DataContext>(options =>
+//                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+//builder.Services.AddCors(options =>
+//            {
+//                options.AddPolicy(
+//                    name: "AllowOrigin",
+//                    builder =>
+//                    {
+//                        builder.AllowAnyOrigin()
+//                                .AllowAnyMethod()
+//                                .AllowAnyHeader();
+//                    });
+//            });
+
+//var app = builder.Build();
+//app.UseCors("AllowOrigin");
+//// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+
+//}
+
+//app.MapControllers();
+
+//app.Run();
