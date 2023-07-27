@@ -1,6 +1,6 @@
 import { NotExpr } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AccountService } from 'src/_services/account.service';
+import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
   selector: 'app-register',

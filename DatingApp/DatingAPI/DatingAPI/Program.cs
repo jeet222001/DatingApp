@@ -1,5 +1,7 @@
+using DatingAPI.Errors;
 using DatingAPI.Extensions;
 using DatingAPI.Interfaces;
+using DatingAPI.Middleware;
 using DatingAPI.Models;
 using DatingAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -24,12 +26,13 @@ builder.Services.AddCors();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+	app.UseDeveloperExceptionPage();
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
-
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors(builder =>builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 app.UseAuthentication();
 app.UseAuthorization();
