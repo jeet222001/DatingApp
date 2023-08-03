@@ -1,0 +1,36 @@
+<div class="container mt-5 ms-auto">
+	<div class="row">
+		<div>
+			<h2 class="text-primary">Sign Up</h2>
+			<hr>
+			{{'childVar'+childVar}}
+			<form #registerForm="ngForm"
+				(ngSubmit)="Register()">
+				<div class="mb-3">
+					<input [(ngModel)]="model.username"
+						type="text"
+						name="username"
+						class="form-control"
+						placeholder="Username">
+				</div>
+				<div class="mb-3">
+					<input [(ngModel)]="model.password"
+						type="password"
+						name="password"
+						class="form-control"
+						placeholder="Password">
+				</div>
+
+				<button type="submit"
+					class="btn btn-success me-2">
+					Register
+				</button>
+				<button (click)="Cancel()"
+					type="button"
+					class="btn me-1">
+					Cancel
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
