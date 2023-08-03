@@ -1,4 +1,5 @@
 ﻿using DatingAPI.Data;
+using DatingAPI.Helpers;
 using DatingAPI.Interfaces;
 using DatingAPI.Models;
 using DatingAPI.Services;
@@ -17,7 +18,8 @@ namespace DatingAPI.Extensions
 			services.AddScoped<ITokenService, TokenService>();
 			services.AddScoped<IUserRepository, UserRepository>();
 			services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+			services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
+			services.AddScoped<IPhotoService, PhotoService>();
 			return services;
 		}
 	}
