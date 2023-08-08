@@ -7,11 +7,10 @@
             <button class="btn btn-primary btn-info btn-lg me-2">Learn More</button>
         </div>
     </div>
-    {{parentvar}}
     <div *ngIf="RegisterMode" class="container">
         <div class="row justify-content-center">
-            <input type="text" name="" id="">
-            <app-register  (cancelRegister)="CancelRegister($event)" [childVar]="parentvar"></app-register>
+            <!-- <input type="text" name="" id=""> -->
+            <app-register  (cancelRegister)="CancelRegister($event)"></app-register>
         </div>
     </div>
 </div>
