@@ -30,7 +30,7 @@ jobs:
           npm install -g @angular/cli
           cd DatingClient
           npm install --legacy-peer-deps
-          npm run build -- --prod
+          ng build --configuration=production
         env:
           NODE_OPTIONS: --max-old-space-size=8192
 
