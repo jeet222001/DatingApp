@@ -8,6 +8,7 @@ using DatingAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,10 +20,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddApplicationServices(builder.Configuration);
-builder.Services.AddIdentityServices(builder.Configuration);
+var configuration = new ConfigurationBuilder()
+		.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))
+		.AddJsonFile("appsettings.json").Build();
+
+builder.Services.AddApplicationServices(configuration);
+builder.Services.AddIdentityServices(configuration);
 var app = builder.Build();
 builder.Services.AddCors();
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
