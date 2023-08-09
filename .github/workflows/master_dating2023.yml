@@ -41,7 +41,7 @@ jobs:
           path: |
             ${{env.DOTNET_ROOT}}/myapp
             ./DatingClient/dist
-
+            ./appsettings.Development.json
   deploy:
     runs-on: windows-latest
     needs: build
