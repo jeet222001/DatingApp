@@ -1,15 +1,10 @@
 using DatingAPI.Data;
-using DatingAPI.Errors;
 using DatingAPI.Extensions;
-using DatingAPI.Interfaces;
 using DatingAPI.Middleware;
 using DatingAPI.Models;
-using DatingAPI.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
-using System.Text;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,7 +34,10 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
-
+app.UseDefaultFiles(new DefaultFilesOptions()
+{
+	DefaultFileNames = new List<string>() { "index.html" }
+});
 app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors(builder =>builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());

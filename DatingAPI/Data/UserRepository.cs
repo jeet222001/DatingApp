@@ -34,6 +34,8 @@ namespace DatingAPI.Data
 		public async Task<IEnumerable<MemberDTO>> GetMembersAsync()
 		{
 			var users= await _context.Users
+				.Take(4)
+				.Skip(4)
 				.ProjectTo<MemberDTO>(_mapper.ConfigurationProvider)
 				.ToListAsync();
 			return users;

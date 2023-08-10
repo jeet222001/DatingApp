@@ -20,6 +20,10 @@ namespace DatingAPI.Extensions
 			services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 			services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
 			services.AddScoped<IPhotoService, PhotoService>();
+			services.AddSpaStaticFiles(configuration =>
+			{
+				configuration.RootPath = "DatingClient/dist";
+			});
 			return services;
 		}
 	}
