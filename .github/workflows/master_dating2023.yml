@@ -42,7 +42,7 @@ jobs:
             ${{env.DOTNET_ROOT}}/myapp
             ./DatingClient/dist
           exclude: |
-            ${{env.DOTNET_ROOT}}/myapp/appsettings.Development.json
+            **/appsettings.Development.json
 
   deploy:
     runs-on: windows-latest
